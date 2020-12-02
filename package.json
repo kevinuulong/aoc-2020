@@ -1,0 +1,19 @@
+{
+  "name": "aoc-2020",
+  "version": "1.0.0",
+  "description": "adventofcode.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevinuulong/aoc-2020.git"
+  },
+  "author": "Kevin Long <kevinuulong@gmail.com> (https://kevinuulong.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kevinuulong/aoc-2020/issues"
+  },
+  "homepage": "https://github.com/kevinuulong/aoc-2020#readme"
+}
