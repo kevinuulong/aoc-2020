@@ -1119,12 +1119,10 @@ function part1() {
 
 function part2() {
   var count = 0;
-
   passports.forEach((el) => {
     var valid = true;
     required.forEach(
       (requirement) => {
-        //   if (el.indexOf(requirement) == -1) {
         var pass = el.split(/[\s:\n]+/);
         var val = pass[pass.indexOf(requirement) + 1];
         switch (requirement) {
@@ -1132,8 +1130,8 @@ function part2() {
             if (
               !(
                 val.length == 4 &&
-                parseInt(val) >= 1920 &&
-                parseInt(val) <= 2002
+                val >= 1920 &&
+                val <= 2002
               )
             )
               valid = false;
@@ -1142,8 +1140,8 @@ function part2() {
             if (
               !(
                 val.length == 4 &&
-                parseInt(val) >= 2010 &&
-                parseInt(val) <= 2020
+                val >= 2010 &&
+                val <= 2020
               )
             )
               valid = false;
@@ -1152,19 +1150,19 @@ function part2() {
             if (
               !(
                 val.length == 4 &&
-                parseInt(val) >= 2020 &&
-                parseInt(val) <= 2030
+                val >= 2020 &&
+                val <= 2030
               )
             )
               valid = false;
             break;
           case "hgt":
-            if (
+            if (!/cm|in/.test(val) ||
               !(val.replace("cm", "") == val
-                ? parseInt(val.replace("in", "")) >= 59 &&
-                  parseInt(val.replace("in", "")) <= 76
-                : parseInt(val.replace("cm", "")) >= 150 &&
-                  parseInt(val.replace("cm", "")) <= 193)
+                ? val.replace("in", "") >= 59 &&
+                val.replace("in", "") <= 76
+                : val.replace("cm", "") >= 150 &&
+                val.replace("cm", "") <= 193)
             )
               valid = false;
             break;
@@ -1182,7 +1180,7 @@ function part2() {
               valid = false;
             break;
           case "pid":
-			if (!val.match(/^\d{9}$/)) valid = false;
+            if (!val.match(/^\d{9}$/)) valid = false;
             break;
           case "cid":
             break;
@@ -1191,7 +1189,6 @@ function part2() {
             break;
         }
       }
-      // }
     );
     if (valid) count++;
   });
