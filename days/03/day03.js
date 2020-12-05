@@ -350,5 +350,6 @@ function countTrees(slope){
     }
     return trees;
 }
+
 part1();
 part2();
