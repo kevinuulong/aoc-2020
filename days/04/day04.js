@@ -1102,96 +1102,96 @@ part1();
 part2();
 
 function part1() {
-  var count = 0;
+	var count = 0;
 
-  passports.forEach((el) => {
-    var valid = true;
-    required.forEach((requirement) => {
-      if (el.indexOf(requirement) == -1) {
-        valid = false;
-      }
-    });
-    if (valid) count++;
-  });
+	passports.forEach((el) => {
+		var valid = true;
+		required.forEach((requirement) => {
+			if (el.indexOf(requirement) == -1) {
+				valid = false;
+			}
+		});
+		if (valid) count++;
+	});
 
-  console.log(count);
+	console.log(count);
 }
 
 function part2() {
-  var count = 0;
-  passports.forEach((el) => {
-    var valid = true;
-    required.forEach(
-      (requirement) => {
-        var pass = el.split(/[\s:\n]+/);
-        var val = pass[pass.indexOf(requirement) + 1];
-        switch (requirement) {
-          case "byr":
-            if (
-              !(
-                val.length == 4 &&
-                val >= 1920 &&
-                val <= 2002
-              )
-            )
-              valid = false;
-            break;
-          case "iyr":
-            if (
-              !(
-                val.length == 4 &&
-                val >= 2010 &&
-                val <= 2020
-              )
-            )
-              valid = false;
-            break;
-          case "eyr":
-            if (
-              !(
-                val.length == 4 &&
-                val >= 2020 &&
-                val <= 2030
-              )
-            )
-              valid = false;
-            break;
-          case "hgt":
-            if (!/cm|in/.test(val) ||
-              !(val.replace("cm", "") == val
-                ? val.replace("in", "") >= 59 &&
-                val.replace("in", "") <= 76
-                : val.replace("cm", "") >= 150 &&
-                val.replace("cm", "") <= 193)
-            )
-              valid = false;
-            break;
-          case "hcl":
-            if (!val.match(/#[0-9A-Fa-f]{6}\b/)) valid = false;
-            break;
-          case "ecl":
-            var ecls = ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"];
-            if (
-              !(
-                ecls.includes(val) &&
-                !ecls.includes(pass[pass.indexOf(requirement) + 2])
-              )
-            )
-              valid = false;
-            break;
-          case "pid":
-            if (!val.match(/^\d{9}$/)) valid = false;
-            break;
-          case "cid":
-            break;
-          default:
-            valid = false;
-            break;
-        }
-      }
-    );
-    if (valid) count++;
-  });
+	var count = 0;
+	passports.forEach((el) => {
+		var valid = true;
+		required.forEach(
+			(requirement) => {
+				var pass = el.split(/[\s:\n]+/);
+				var val = pass[pass.indexOf(requirement) + 1];
+				switch (requirement) {
+					case "byr":
+						if (
+							!(
+								val.length == 4 &&
+								val >= 1920 &&
+								val <= 2002
+							)
+						)
+							valid = false;
+						break;
+					case "iyr":
+						if (
+							!(
+								val.length == 4 &&
+								val >= 2010 &&
+								val <= 2020
+							)
+						)
+							valid = false;
+						break;
+					case "eyr":
+						if (
+							!(
+								val.length == 4 &&
+								val >= 2020 &&
+								val <= 2030
+							)
+						)
+							valid = false;
+						break;
+					case "hgt":
+						if (!/cm|in/.test(val) ||
+							!(val.replace("cm", "") == val
+								? val.replace("in", "") >= 59 &&
+								val.replace("in", "") <= 76
+								: val.replace("cm", "") >= 150 &&
+								val.replace("cm", "") <= 193)
+						)
+							valid = false;
+						break;
+					case "hcl":
+						if (!val.match(/#[0-9A-Fa-f]{6}\b/)) valid = false;
+						break;
+					case "ecl":
+						var ecls = ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"];
+						if (
+							!(
+								ecls.includes(val) &&
+								!ecls.includes(pass[pass.indexOf(requirement) + 2])
+							)
+						)
+							valid = false;
+						break;
+					case "pid":
+						if (!val.match(/^\d{9}$/)) valid = false;
+						break;
+					case "cid":
+						break;
+					default:
+						valid = false;
+						break;
+				}
+			}
+		);
+		if (valid) count++;
+	});
 
-  console.log(count);
+	console.log(count);
 }
